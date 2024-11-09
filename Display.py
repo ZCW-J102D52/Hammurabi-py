@@ -20,6 +20,10 @@ class Display:
 
     def royal_report(year_object):
         Display.format_royal_report(year_object)
+        time.sleep(3)
+        user_input = str(input("Press C to Continue").lower())
+        if (user_input == 'c'):
+            Display.clear_terminal()
     
     def format_royal_report(year_object):
         first_line = f"O great Hammurabi! You are in year {year_object.num_of_yrs} of your ten year rule."

@@ -1,26 +1,6 @@
-import random
-import os
-import time
 from Display import Display
 from GameYear import GameYear
 
-    ### GLOBALS ###
-    
-# wallet = 2800
-    #population = 100
-    #acresOwned = 1000
-    #landValue = 19
-    #########
-    #acresPlanted = 1000
-    #bushelsFed = 0
-    #harvest = 3000
-    #fertility = 3
-    #peopleStarved = 0
-    #immigrants = 5
-    #buschelRats = 200
-    #plagueDeaths = 0
-    #bought_land = False
-    #game_over = False
 
     ####  Game Start ####
     #### Title Card ##
@@ -37,8 +17,9 @@ def Play():
         #new year code here 
         game_over = True #for testing
 
+        game_year.inventory()    
+        game_year.askHowMuchGrainToFeedPeople()
     
-
 
 
 
