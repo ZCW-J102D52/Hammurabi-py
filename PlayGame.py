@@ -81,6 +81,37 @@ def Play():
 
 
     # other methods go here
+def askHowMuchGrainToFeedPeople(bushels):
+  """Asks the players for the amount of grains they want to use to feed the population.
+  Also check the input if it's valid and within the available bushels range.
+  Arguments:
+    bushels: The total number of bushels available for usage.
+  Returns:
+    The number of bushels the players wants to use to feed the population.
+  """
+  while True:
+    try:
+      ask_to_feed_population = int(input("How many bushels you want to use for feeding the population? "))
+      if 0 <= ask_to_feed_population <= bushels:
+        return ask_to_feed_population
+      else:
+        print(f"Please enter a number between 0 and available{bushels}.")
+    except ValueError:
+      print("Invalid input. Please enter a valid number.")
+bushels_available =  2800
+grain_to_feed_people = askHowMuchGrainToFeedPeople(bushels_available)
+print(f"You will use {grain_to_feed_people} bushels to feed the people.")
+
+
+
+
+NEW
+
+
+
+
+
+
 
 #    if __name__ == "__main__":
  #       hammurabi = Hammurabi()
