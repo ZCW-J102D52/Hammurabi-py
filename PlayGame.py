@@ -26,7 +26,6 @@ from GameYear import GameYear
     #### Title Card ##
 Display.title_card()
 def Play():
-
     game_year = GameYear()
     game_over = False
     while (game_over == False):
@@ -44,7 +43,11 @@ def Play():
 
 
 ###### FIRST QUESTION BUY LAND
+        game_year.inventory()
         game_year.askHowManyAcresToSell()
+
+
+        game_year.inventory()
 
 
 
