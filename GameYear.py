@@ -20,15 +20,20 @@ class GameYear:
         if (self.uprising == True):
             return True
         return False
-    
+    def inventory(self):
+        inv = "Population: {population}\tMoney: {wallet} \tAcres: {acresOwned}".format(**self.__dict__)
+        print(inv)
+
     def askHowManyAcresToSell(self):
-        print("You have " + str(self.acresOwned) + " acres.")
+        print(f"You have {self.acresOwned} acres.")
         land_to_sell = int(input("How many acres do you want to sell? "))
         while(land_to_sell > self.acresOwned):
-            print(str(land_to_sell) + " is more than you own")
-            land_to_sell = int(input("How many acres do you want to sell? You have " + str(self.acresOwned) + " acres."))
+            # print(str(land_to_sell) + " is more than you own")
+            print(f"{land_to_sell} is more than you own")
+            land_to_sell = int(input(f"""How many acres do you want to sell? 
+                                     You have {self.acresOwned} acres."""))
         # bushels = bushels + land_to_sell * 19 needs to be in the playGame method because we do not have wallet in this method
-            self.acresOwned = self.acresOwned - land_to_sell
+        self.acresOwned = self.acresOwned - land_to_sell
             #### Function still needs the money earned from the sale to be added to the wallet.
 
         
