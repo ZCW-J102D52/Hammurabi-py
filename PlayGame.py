@@ -7,91 +7,43 @@ from GameYear import GameYear
 Display.title_card()
 def Play():
     game_year = GameYear()
-    game_over = False
-    while (game_over == False):
-        
-        print(str(game_year.wallet))
-        ### FIRST SUMMARY ###       
-        Display.royal_report(game_year)
-        #game_over = game_year.game_over_check()
-        #new year code here 
-        game_over = True #for testing
+    game_over = False      
+        ### SUMMARY ###       
+    Display.royal_report(game_year)
+        #game_over = game_year.game_over_check() 
 
-        game_year.inventory()    
-        game_year.askHowMuchGrainToFeedPeople()
-    
-
-
-
+        # game_over = True #for testing
 ###### FIRST QUESTION BUY LAND
+
+    while (game_over == False):
+    
+        Display.clear_terminal()
+        game_year.inventory()
+        game_year.askHowManyAcresToBuy()
+
+
+####### SECOND QUESTION SELL LAND
+        Display.clear_terminal()
         game_year.inventory()
         game_year.askHowManyAcresToSell()
 
 
-        game_year.inventory()
-
-
-
-
-
-
-
-
-
-####### SECOND QUESTION SELL LAND
-
-
-# askHowManyAcresToSell(acresOwned)
-
 ####### THIRD QUESTION FEED PEOPLE
-
-
-
+        Display.clear_terminal()
+        game_year.inventory()    
+        game_year.askHowMuchGrainToFeedPeople()
 
 
 ###### FOURTH QUESTION PLANT HARVEST
+        Display.clear_terminal()
+        game_year.inventory()
+        game_year.askHowManyAcresToPlant()
 
+######        
 
-
-
-
-
-
-
-
-
-
-    # other methods go here
-def askHowMuchGrainToFeedPeople(bushels):
-  """Asks the players for the amount of grains they want to use to feed the population.
-  Also check the input if it's valid and within the available bushels range.
-  Arguments:
-    bushels: The total number of bushels available for usage.
-  Returns:
-    The number of bushels the players wants to use to feed the population.
-  """
-  while True:
-    try:
-      ask_to_feed_population = int(input("How many bushels you want to use for feeding the population? "))
-      if 0 <= ask_to_feed_population <= bushels:
-        return ask_to_feed_population
-      else:
-        print(f"Please enter a number between 0 and available{bushels}.")
-    except ValueError:
-      print("Invalid input. Please enter a valid number.")
-bushels_available =  2800
-grain_to_feed_people = askHowMuchGrainToFeedPeople(bushels_available)
-print(f"You will use {grain_to_feed_people} bushels to feed the people.")
-
-
-
-
-NEW
-
-
-
-
-
+##### End of Year #####
+        game_year.endOfYear()
+        Display.royal_report(game_year)  
 
 
 #    if __name__ == "__main__":
