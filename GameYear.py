@@ -26,8 +26,8 @@ class GameYear:
             return True
         return False
     def inventory(self):
-        inv = "Population: {population}  Money: {wallet}  Acres: {acresOwned}".format(**self.__dict__)
-        y=f"YEAR: {self.num_of_yrs}"
+        inv = "Population: {population}  Bushels: {wallet}  Acres: {acresOwned}".format(**self.__dict__)
+        y=f"YEAR:  {self.num_of_yrs}"
         gaps = "  //                                                                                    //"
         edge = "  ////////////////////////////////////////////////////////////////////////////////////////"
         print(edge)
@@ -36,7 +36,6 @@ class GameYear:
         print(f"  //",inv.center(82),"//")
         print (gaps)
         print(edge)
-        print()
         print()
 
     def endOfYear(self):
