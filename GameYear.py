@@ -152,23 +152,32 @@ class GameYear:
 
 ###### Maisha #######
     def askHowManyAcresToBuy(self):
-        # while True:   I commented this out because it looped forever.
-        acres = int(input("How many acres of land would you like to buy?\n")) 
-        if acres > 0 and acres * self.landValue <= self.wallet:
-            self.acresOwned += acres
-            self.wallet -= acres * self.landValue
+        while True:   #I commented this out because it looped forever.
+            acres = int(input("How many acres of land would you like to buy?\n"))
+            if acres > 0 and acres * self.landValue <= self.wallet:
+                self.bought = True
+                self.acresOwned += acres
+                self.wallet -= acres * self.landValue
+                return acres
                 ##### I think there's a missing varriable like total(landvaule*acres), or something. 
                 #The next line looks at the value which is 17-23 and the wallet will almost always be bigger
                 #Also, could you please add self.bought == True? I will have Gabi add a check for it at the top
                 #There will be a check at the top of sell to stop it from being asked if they bought.
-        elif self.landValue > self.wallet:
-            print("Land value is", self.landValue, "bushels per acre. You don't have enough bushels to purchase. Try again! ")
-        elif acres == 0 or acres < 0:
-            print("Must enter a positive number to buy land.")
+            elif acres < 0:
+                print("Must enter a positive number to buy land.")
+
+            elif self.landValue > self.wallet:
+                print("Land value is", self.landValue, "bushels per acre. You don't have enough bushels to purchase. Try again! ")
+        
+            elif acres == 0:
+                self.bought ==False
+                return acres
                 ### I think taking in 0 is fine. If they don't buy, they get to sell.
                 #If 0, just pass I think.
+        
 
     def immigrants(self):
         if self.peopleStarved == 0:
             self.immigrants = (( 20*self.acresOwned + self.grainInStorage) // (100 * self.population) + 1)
+            self.population += self.immigrants
         ### This needs a line that adds the immigrants to the pop 
