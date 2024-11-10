@@ -1,4 +1,3 @@
-
 class HammurabiTest:
 
     def about(self, expected, actual):
