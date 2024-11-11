@@ -22,12 +22,7 @@ class GameYear:
         self.plagueDead = plagueDead
         self.belltoll = belltoll
 
-    def game_over_check (self):
-        if (self.population <= 0):
-            return True
-        if (self.uprising == True):
-            return True
-        return False
+        
     def inventory(self):
         inv = "Population: {population}  Bushels: {wallet}  Acres: {acresOwned}".format(**self.__dict__)
         y=f"YEAR:  {self.num_of_yrs}"
@@ -43,16 +38,12 @@ class GameYear:
 
     def endOfYear(self):
         self.num_of_yrs = self.num_of_yrs + 1
-        if (self.num_of_yrs == 11):
-            GameYear.youWin()
+        if (self.num_of_yrs > 10):
+            return True
+        return False
 
-    def youWin(self):
-        print("YOU WIN!!")
+    
 
-    def upLoss():
-        print("Too many people starved and your people rose up, you lose")
-    def noPop(self):
-        print("All the citizens are dead. You lose")
 
         ######### Gabi ########
     def askHowManyAcresToSell(self):
@@ -62,7 +53,6 @@ class GameYear:
         if self.bought == True:
             pass
         else:
-            print(f"You have {self.acresOwned} acres.")
             print(f"Land is valued at {self.landValue} bushels an acre.")
             land_to_sell = int(input("How many acres do you want to sell? "))
             while(land_to_sell > self.acresOwned):
@@ -77,7 +67,6 @@ class GameYear:
         chanceOfPlagues = random.randint(1,100)
         if chanceOfPlagues < 16:
             # print("Plague got you this year. Half your population is dead.")
-            ### I commented out the prints because this outcome is announced in the royal report
             self.ohNo = 20
             self.plagueDead = self.population  // 2
             return self.plagueDead
@@ -100,13 +89,13 @@ class GameYear:
     def uprising(self):
         if self.howManyPeopleStarved > (self.population+self.howManyPeopleStarved* 0.45):
             return True  
-        
         return False
 
         ####### Sharmin #######
     def askHowMuchGrainToFeedPeople(self):
         while True:
-            pantry = int(input("How many bushels do you want to use for the people?  "))
+            print("Each citizen needs 20 bushels to survive the year.")
+            pantry = int(input("How many bushels do you want to use to feed the people?  "))
             if pantry>self.wallet:
                 print("As much as I wish it were true, it is not possible.")
                 print("Please decree a new number, O Hammurabi.")
@@ -125,20 +114,19 @@ class GameYear:
 
     def askHowManyAcresToPlant(self):
         while True:
-            plan = int(input("How many acres you want to plant?"))
+            print("To plant on the land, we need two bushels per acre. One citizen can work up to ten acres each.")
+            plan = int(input("How many acres you want to plant?  "))
             if plan > self.acresOwned:
-                print("You don't have enough acres!")
+                print("You don't have enough acres, my lord.")
             elif plan > 10 * self.population:
-                print("You don't have enough population!")
+                print("We don't have enough people to work that much land.")
             elif 2*plan >self.wallet:
-                print("You don't have enough grain!")
+                print("We do not have enough seed to plant that much land.")
             else: 
                 self.wallet = self.wallet - 2*plan
                 self.acresPlanted = plan  
                 return plan   
         
-        
-
     def grainEatenByRats(self):
         x = random.randint(0, 100)
         if(x>40):
@@ -154,7 +142,7 @@ class GameYear:
 ###### Maisha #######
     def askHowManyAcresToBuy(self):
         while True:  
-            print(f"Land value is {self.landValue} per acre.")
+            print(f"Land value is {self.landValue} bushels per acre.")
             acres = int(input("How many acres of land would you like to buy?  "))
             if acres > 0 and acres * self.landValue <= self.wallet:
                 self.bought = True
@@ -162,9 +150,9 @@ class GameYear:
                 self.wallet -= acres * self.landValue
                 return acres
             elif acres < 0:
-                print("Must enter a positive number to buy land.")
+                print("I beg your pardon, please decree a positive number.")
             elif self.landValue*acres > self.wallet:
-                print("You don't have enough bushels to purchase. Try again! ")
+                print("We do not have enough bushels to purchase that much land, O Hammurabi. Please decree again.")
             elif acres == 0:
                 self.bought ==False
                 return acres

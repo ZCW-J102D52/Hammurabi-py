@@ -63,5 +63,10 @@ if __name__ == "__main__":
                                 game_year.newCostOfLand()
 
 ##### End of Year #####
-                                game_year.endOfYear()
+                                game_over=game_year.endOfYear()
+                                if (game_over == True):
+                                        Display.youWin()
+                                        
+
+
 

@@ -29,7 +29,7 @@ class Display:
         Display.clear_terminal()
     
     def format_royal_report(self):
-        first_line = f"O great Hammurabi! You are in year {self.num_of_yrs} of your ten year rule."
+        first_line = f"O great Hammurabi! You are in year {self.num_of_yrs} of your 10 year rule."
         second_line = f"In the previous year {self.howManyPeopleStarved} people starved to death."
         third_line = f"In the previous year, {self.immigrants} people entered the kingdom."
         fourth_line = f"The population is now {self.population}."
@@ -88,6 +88,21 @@ class Display:
         print("  //                                                                                    //")
         print("  //",messedUp.center(82),"//")
         print("  //",messedUp2.center(82),"//")
+        print("  //                                                                                    //")
+        print("  ////////////////////////////////////////////////////////////////////////////////////////")
+        print("")
+        print(gg.center(88))
+        print("")
+
+    def youWin():
+        Display.clear_terminal()
+        bigWin = "Your choices have lead the kingdom to great prosperity!"
+        bigWin2 = "The people of the land will revere your name forever!!"
+        gg= "YOU    WIN"
+        print("  ////////////////////////////////////////////////////////////////////////////////////////")
+        print("  //                                                                                    //")
+        print("  //",bigWin.center(82),"//")
+        print("  //",bigWin2.center(82),"//")
         print("  //                                                                                    //")
         print("  ////////////////////////////////////////////////////////////////////////////////////////")
         print("")
