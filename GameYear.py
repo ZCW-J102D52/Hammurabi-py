@@ -42,10 +42,7 @@ class GameYear:
             return True
         return False
 
-    
-
-
-        ######### Gabi ########
+            ######### Gabi ########
     def askHowManyAcresToSell(self):
         
         ## Could you please add a if that checks if self.bought == false, else pass? That way no one
@@ -90,6 +87,9 @@ class GameYear:
         if self.howManyPeopleStarved > (self.population+self.howManyPeopleStarved* 0.45):
             return True  
         return False
+
+
+
 
         ####### Sharmin #######
     def askHowMuchGrainToFeedPeople(self):
